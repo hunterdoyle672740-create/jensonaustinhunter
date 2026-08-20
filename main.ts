@@ -2,6 +2,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (spr
     info.setScore(120 - 2 * coconut_2)
     game.gameOver(true)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    game.gameOver(false)
+})
 let coconut_2 = 0
 let Player_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -21,12 +24,33 @@ let Player_1 = sprites.create(img`
     . . c c c c c b 5 5 b c c c . . 
     . . c b b b c d 5 5 b c . . . . 
     `, SpriteKind.Player)
+let myEnemy = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . 2 . . 2 . . . . . . 
+    . . . . . . 2 . . 2 . . . . . . 
+    . . . . . . . 2 2 . . . . . . . 
+    . . . . . . . 2 2 . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Enemy)
+myEnemy.follow(Player_1, 30)
+myEnemy.setScale(1, ScaleAnchor.Middle)
 Player_1.setScale(0.6, ScaleAnchor.Middle)
 controller.moveSprite(Player_1)
 tiles.setCurrentTilemap(tilemap`level1`)
 tiles.placeOnRandomTile(Player_1, sprites.dungeon.stairNorth)
 scene.cameraFollowSprite(Player_1)
 coconut_2 = 0
+myEnemy.setPosition(160, 0)
 forever(function () {
     info.changeScoreBy(1)
     coconut_2 += 1
