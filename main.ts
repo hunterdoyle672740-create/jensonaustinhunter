@@ -51,7 +51,7 @@ let myEnemy = sprites.create(img`
     ........................
     `, SpriteKind.Enemy)
 myEnemy.follow(Player_1, 30)
-myEnemy.setScale(0.3, ScaleAnchor.Middle)
+myEnemy.setScale(0.4, ScaleAnchor.Middle)
 Player_1.setScale(0.6, ScaleAnchor.Middle)
 controller.moveSprite(Player_1)
 tiles.setCurrentTilemap(tilemap`level1`)
