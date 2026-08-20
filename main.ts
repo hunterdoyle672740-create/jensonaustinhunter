@@ -1,3 +1,24 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    lkfjadsflkj = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . f f . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, Player_1, 50, 50)
+    lkfjadsflkj.follow(myEnemy)
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (sprite, location) {
     info.setScore(120 - 2 * coconut_2)
     game.gameOver(true)
@@ -5,8 +26,11 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (spr
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     game.gameOver(false)
 })
+let lkfjadsflkj: Sprite = null
 let coconut_2 = 0
-let Player_1 = sprites.create(img`
+let myEnemy: Sprite = null
+let Player_1: Sprite = null
+Player_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . c c c c . . . . . . . . 
     . . c c 5 5 5 5 c c . . . . . . 
@@ -24,7 +48,7 @@ let Player_1 = sprites.create(img`
     . . c c c c c b 5 5 b c c c . . 
     . . c b b b c d 5 5 b c . . . . 
     `, SpriteKind.Player)
-let myEnemy = sprites.create(img`
+myEnemy = sprites.create(img`
     ........................
     ........................
     ........................
